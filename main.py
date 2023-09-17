@@ -1,7 +1,8 @@
 import time
 import os
-import pickle
+import base64
 
+from io import BytesIO
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from mytools import ColorPrint
@@ -48,15 +49,17 @@ def upload_to_yadick(content: dict)->None:
         content['time_start'] = f'{now.strftime("%Y.%m.%d_%H:%M:%S")}'
         filename = f'{now.strftime("%Y.%m.%d_%H.%M.%S")}.pickle'
 
-        # Сохранение словаря в бинарном файле
-        with open(filename, "wb") as file:
-            pickle.dump(content, file)
+        # Конвертация словаря в строку и кодирование в base64
+        encoded_str = base64.b64encode(str(content).encode()).decode()
+
+        # Создание BytesIO объекта с содержимым файла в формате base64
+        file_contents = BytesIO(encoded_str.encode())
 
         yadisk.upload_of_yd(
+            filename=filename,
             folder_name=folder_name,
-            filename=filename
+            file_obj=file_contents
         )
-        os.remove(filename)
 
     except Exception as ex:
         printer(ex)
