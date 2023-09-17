@@ -1,5 +1,4 @@
 import time
-import os
 import base64
 
 from io import BytesIO
@@ -17,7 +16,7 @@ printy = ColorPrint().print_yellow
 # statistic = StatisticCollection()
 
 PROGRAM = "COLLSTAT"
-VERSION = "version_v_1.7.1 (09.09.23) for Win 7,10"
+VERSION = "version_v_1.8 (17.09.2023) for Win 7,10"
 
 
 def upload_to_yadick(content: dict)->None:
@@ -47,7 +46,7 @@ def upload_to_yadick(content: dict)->None:
         # имя файла, равно текущему времени на ПК
         now = datetime.now()
         content['time_start'] = f'{now.strftime("%Y.%m.%d_%H:%M:%S")}'
-        filename = f'{now.strftime("%Y.%m.%d_%H.%M.%S")}.pickle'
+        filename = f'{now.strftime("%Y.%m.%d_%H.%M.%S")}.txt'
 
         # Конвертация словаря в строку и кодирование в base64
         encoded_str = base64.b64encode(str(content).encode()).decode()
