@@ -13,10 +13,9 @@ printer = ColorPrint().print_error
 printinf = ColorPrint().print_info
 printw = ColorPrint().print_warning
 printy = ColorPrint().print_yellow
-# statistic = StatisticCollection()
 
 PROGRAM = "COLLSTAT"
-VERSION = "version_v_1.8 (17.09.2023) for Win 7,10"
+VERSION = "version_v_1.9 (02.05.2025) for Win 7,10"
 
 
 def upload_to_yadick(content: dict)->None:
@@ -28,16 +27,14 @@ def upload_to_yadick(content: dict)->None:
     """
     # загрузка параметров: FOLDER_PATH - папка, в которую сохранится folder_name на яддекс_диске
     # YANDEX_TOKEN - токен яндекс REST API
-    while True:
-        try:
-            YANDEX_TOKEN = 'y0_AgAAAAABJQnxAAkufQAAAADiFPV_TjOFwUIbR6KNgvJ5KSFpjefPkow'
+    try:
+        YANDEX_TOKEN = 'y0__xDxk5QJGP3cJCDnjcT_Ek1FhLPp6FOnMXL3ClW-PSrcDxGd'
 
-            if YANDEX_TOKEN == "":
-                raise ValueError
-            break
+        if YANDEX_TOKEN == "":
+            raise ValueError
 
-        except Exception as ex:
-            print(ex)
+    except Exception as ex:
+        print(ex)
 
     try:
         folder_name = content['IP']

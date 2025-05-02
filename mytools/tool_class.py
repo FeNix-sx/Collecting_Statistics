@@ -3,7 +3,6 @@ from colorama import init, Fore, Style
 
 
 init(autoreset=True)
-# setting = Setting()
 
 class ColorInput:
     def __init__(self, patern: list=None) -> None:

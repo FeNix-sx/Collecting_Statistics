@@ -260,7 +260,7 @@ class StatisticCollection:
             self.__out_error(ex)
 
     @property
-    def get_full_info(self )->dict:
+    def get_full_info(self)->dict:
         try:
             self.get_my_ip()
             self.get_my_country()
