@@ -3,8 +3,12 @@ from yadisk import YaDisk
 class WorkingYandexDisk:
     YANDEX_TOKEN = "y0__xDxk5QJGP3cJCDnjcT_Ek1FhLPp6FOnMXL3ClW-PSrcDxGd"  #мой токен
     def __init__(self, yandex_token: str=''):
+        self.token = yandex_token
         try:
-            self.yadisk = YaDisk(token=self.YANDEX_TOKEN)
+            if self.token:
+                self.yadisk = YaDisk(token=self.token)
+            else:
+                self.yadisk = YaDisk(token=self.YANDEX_TOKEN)
 
             if self.yadisk.check_token():
                 # print("Connection to YD")
